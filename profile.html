@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+	  <!--Cognito JavaScript-->
+    <script type="text/javascript" src="jquery.js">
+    </script>
+    <script type="text/javascript" src="jquery-ui.min.js">
+    </script>
+    <script type="text/javascript" src="tt_slideshow.js">
+    </script>
+    <script type="text/javascript" src="bootstrap.min.js">
+    </script>
+    <script type="text/javascript" src="Customjs.js">
+    </script>
+    <script type="text/javascript" src="contactform.js">
+    </script>
+    <script src="js/amazon-cognito-identity.min.js"></script>  
+		<script src="js/config.js"></script>
+    <script type="text/javascript" src="totop.js">
+    </script>
+     <link rel="stylesheet" href="css/font.css">
+     <link rel="stylesheet" href="css/normalize.css">
+     <link rel="stylesheet" href="css/index.css">
+     <link rel="stylesheet" href="/css/message.css">
+
+		</head>
+
+    <title> Home </title>
+    <link rel="stylesheet"  href="bootstrap.css" type="text/css" media="screen"/>
+    <link rel="stylesheet"  href="style.css" type="text/css" media="screen"/>
+   
+    <body class="Home">
+    <div class="totopshow">
+    <a href="#" class="back-to-top"><img alt="Back to Top" src="images/gototop0.png"/></a>
+    </div>
+    <div id="ttr_page" class="container">
+    <nav id="ttr_menu" class="navbar-default navbar">
+       <div id="ttr_menu_inner_in">
+    <div class="menuforeground">
+    </div>
+    <div id="navigationmenu">
+    <div class="navbar-header">
+    <button id="nav-expander" data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+    <span class="sr-only">
+    </span>
+    <span class="icon-bar">
+    </span>
+    <span class="icon-bar">
+    </span>
+    <span class="icon-bar">
+    </span>
+    </button>
+    <a href="http://www.templatetoaster.com" target="_self">
+    <img  class="ttr_menu_logo" src="menulogo.png" >
+    </a>
+    </div>
+    <div class="menu-center collapse navbar-collapse">
+    <ul class="ttr_menu_items nav navbar-nav navbar-right">
+    <li class="ttr_menu_items_parent dropdown active"><a href="home.html" class="ttr_menu_items_parent_link_active"><span class="menuchildicon"></span>PO REGISTRATION</a>
+    <hr class ="horiz_separator"/>
+    </li>
+    <li class="ttr_menu_items_parent dropdown"><a href="about-us.html" class="ttr_menu_items_parent_link"><span class="menuchildicon"></span>MANUFACTURE</a>
+    <hr class ="horiz_separator"/>
+    </li>
+    <li class="ttr_menu_items_parent dropdown"><a href="projects.html" class="ttr_menu_items_parent_link"><span class="menuchildicon"></span>WAREHOUSING</a>
+    <hr class ="horiz_separator"/>
+    </li>
+    <li class="ttr_menu_items_parent dropdown"><a href="services.html" class="ttr_menu_items_parent_link"><span class="menuchildicon"></span>SHIP</a>
+    <hr class ="horiz_separator"/>
+    </li>
+    <li class="ttr_menu_items_parent dropdown"><a href="contact-us.html" class="ttr_menu_items_parent_link"><span class="menuchildicon"></span>MATERIAL ONSITE</a>
+    <hr class ="horiz_separator"/>
+    </li>
+    </ul>
+    </div>
+    </div>
+    </div>
+    </nav>
+    <div class="ttr_banner_slideshow">
+    </div>
+    <div class="ttr_slideshow">
+    <div id="ttr_slideshow_inner">
+    <ul>
+    <li id="Slide0" class="ttr_slide" data-slideEffect="SlideBottom">
+    <a href="http://templatetoaster.com/"></a>
+    <div class="ttr_slideshow_last">
+    </div>
+    </li>
+    <li id="Slide1" class="ttr_slide" data-slideEffect="SlideBottom">
+    <a href="http://templatetoaster.com/"></a>
+    <div class="ttr_slideshow_last">
+    </div>
+    </li>
+    </ul>
+    </div>
+    <div class="ttr_slideshow_in">
+    <div class="ttr_slideshow_last">
+    <div class="left-button">
+    </div>
+    <div id="nav"></div>
+    <div class="right-button">
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="ttr_banner_slideshow">
+    </div>
+    <div id="ttr_content_and_sidebar_container">
+    <div id="ttr_content">
+    <div id="ttr_content_margin"class="container-fluid">
+    <div style="height:0px;width:0px;overflow:hidden;-webkit-margin-top-collapse: separate;"></div>
+    <div class="ttr_Home_html_column00"></div>
+    <div style="height:0px;width:0px;overflow:hidden;-webkit-margin-top-collapse: separate;"></div>
+    <section class="form-wrap">
+     
+      <form id="signinForm">
+        <input type="file" id="file" placeholder="Upload the  file" required>
+        <script>
+        var callAPI = ()=>{
+            // instantiate a headers object
+            var myHeader = new Headers();
+            // add content type header to object
+            myHeader.append("Content-Type","application/json");
+            // using built in JSON utility package turn object to string and store in a variable
+            var raw = JSON.stringify("Hello World");
+            // create a JSON object with parameters for API call and store in a variable
+            var requestOptions = {
+                method: 'POST',
+                headers: myHeader,
+                body: raw,
+                redirect: 'follow'
+            };
+            // make API call with parameters and use promises to get response
+            fetch(_config.api.invokeUrl + '/profile', requestOptions)
+            .then(response => response.text())
+            .then(result => alert(JSON.parse(result).body))
+            .catch(error => console.log('error', error));
+        }
+        </script>
+        
+        <input type="button" value="Submit" onclick="callAPI()">
+      </form>
+  </section>
+    
+    
+    <script>
+  	  //async function getUser(email_address) {
+        // get the user info from API Gate
+        
+        //const api_url = 'https://gonvpjbyuf.execute-api.us-east-1.amazonaws.com/prod/user-profile?user_email=' + email_address;
+        //const api_response = await fetch(api_url);
+        //const api_data = await(api_response).json();
+        //console.log(api_data);
+        
+        //const div_user_info = document.getElementById('profile');
+        //div_user_info.innerHTML = api_data['body'];
+      //}
+      
+
+      
+			var data = { 
+				UserPoolId : _config.cognito.userPoolId,
+        ClientId : _config.cognito.clientId
+    	};
+    	var userPool = new AmazonCognitoIdentity.CognitoUserPool(data);
+    	var cognitoUser = userPool.getCurrentUser();
+	
+			window.onload = function(){
+       
+    		if (cognitoUser != null) {
+        	cognitoUser.getSession(function(err, session) {
+            if (err) {
+            	alert(err);
+              return;
+            }
+            //console.log('session validity: ' + session.isValid());
+            
+            cognitoUser.getUserAttributes(function(err, result) {
+							if (err) {
+								console.log(err);
+                return;
+							}
+							// user email address
+							console.log(result[2].getValue());
+							getUser(result[2].getValue()) 
+						});
+        	});
+    		} else {
+    			console.log("Already signed-out");
+          //window.location.href='signin.html';
+    		} 
+        
+        }
+        
+
+    </script>
+    
+  </body>
+</html>

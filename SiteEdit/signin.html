@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)https://colorlib.com/etc/lf/Login_v14/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Site Editor login page</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="icon" type="image/png" href="/images/logo.ico"/>
+
+<link rel="stylesheet" type="text/css" href="./signin_files/bootstrap.min.css">
+
+<link rel="stylesheet" type="text/css" href="./signin_files/font-awesome.min.css">
+
+<link rel="stylesheet" type="text/css" href="./signin_files/icon-font.min.css">
+
+<link rel="stylesheet" type="text/css" href="./signin_files/animate.css">
+
+<link rel="stylesheet" type="text/css" href="./signin_files/hamburgers.min.css">
+
+<link rel="stylesheet" type="text/css" href="./signin_files/animsition.min.css">
+
+<link rel="stylesheet" type="text/css" href="./signin_files/select2.min.css">
+
+<link rel="stylesheet" type="text/css" href="./signin_files/daterangepicker.css">
+
+<link rel="stylesheet" type="text/css" href="./signin_files/util.css">
+<link rel="stylesheet" type="text/css" href="./signin_files/main.css">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="./js/amazon-cognito-auth.min.js"></script>
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.596.0.min.js"></script> 
+<script src="./js/amazon-cognito-identity.min.js"></script>   
+<script src="./js/config.js"></script>
+<script src="./js/cognito-auth.js"></script>
+
+
+<meta name="robots" content="noindex, follow">
+<script type="text/javascript" async="" src="./signin_files/analytics.js.download" nonce="853bb0d3-583c-4a7a-9e7a-80a71489e59a"></script><script defer="" referrerpolicy="origin" src="./signin_files/s.js.download"></script><script nonce="853bb0d3-583c-4a7a-9e7a-80a71489e59a">(function(w,d){!function(bv,bw,bx,by){bv[bx]=bv[bx]||{};bv[bx].executed=[];bv.zaraz={deferred:[],listeners:[]};bv.zaraz.q=[];bv.zaraz._f=function(bz){return function(){var bA=Array.prototype.slice.call(arguments);bv.zaraz.q.push({m:bz,a:bA})}};for(const bB of["track","set","debug"])bv.zaraz[bB]=bv.zaraz._f(bB);bv.zaraz.init=()=>{var bC=bw.getElementsByTagName(by)[0],bD=bw.createElement(by),bE=bw.getElementsByTagName("title")[0];bE&&(bv[bx].t=bw.getElementsByTagName("title")[0].text);bv[bx].x=Math.random();bv[bx].w=bv.screen.width;bv[bx].h=bv.screen.height;bv[bx].j=bv.innerHeight;bv[bx].e=bv.innerWidth;bv[bx].l=bv.location.href;bv[bx].r=bw.referrer;bv[bx].k=bv.screen.colorDepth;bv[bx].n=bw.characterSet;bv[bx].o=(new Date).getTimezoneOffset();if(bv.dataLayer)for(const bI of Object.entries(Object.entries(dataLayer).reduce(((bJ,bK)=>({...bJ[1],...bK[1]})))))zaraz.set(bI[0],bI[1],{scope:"page"});bv[bx].q=[];for(;bv.zaraz.q.length;){const bL=bv.zaraz.q.shift();bv[bx].q.push(bL)}bD.defer=!0;for(const bM of[localStorage,sessionStorage])Object.keys(bM||{}).filter((bO=>bO.startsWith("_zaraz_"))).forEach((bN=>{try{bv[bx]["z_"+bN.slice(7)]=JSON.parse(bM.getItem(bN))}catch{bv[bx]["z_"+bN.slice(7)]=bM.getItem(bN)}}));bD.referrerPolicy="origin";bD.src="/cdn-cgi/zaraz/s.js?z="+btoa(encodeURIComponent(JSON.stringify(bv[bx])));bC.parentNode.insertBefore(bD,bC)};["complete","interactive"].includes(bw.readyState)?zaraz.init():bv.addEventListener("DOMContentLoaded",zaraz.init)}(w,d,"zarazData","script");})(window,document);</script></head>
+<body>
+<div class="limiter">
+<div class="container-login100">
+<div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
+<form class="login100-form validate-form flex-sb flex-w">
+<span class="login100-form-title p-b-32">
+Site Editor Account Login
+</span>
+<span class="txt1 p-b-11">
+Username
+</span>
+<div class="wrap-input100 validate-input m-b-36" data-validate="Username is required">
+<input class="input100" type="text" name="username"id="emailInputSignin">
+<span class="focus-input100"></span>
+</div>
+<span class="txt1 p-b-11">
+Password
+</span>
+<div class="wrap-input100 validate-input m-b-12" data-validate="Password is required">
+<span class="btn-show-pass">
+<i class="fa fa-eye"></i>
+</span>
+<input class="input100" type="password" name="pass" id="passwordInputSignin">
+<span class="focus-input100"></span>
+</div>
+<div class="container-login100-form-btn">
+<input type="button" value="LOGIN" class="login100-form-btn" onclick="signInButton()">
+
+</div>
+</form>
+</div>
+</div>
+</div>
+<div id="dropDownSelect1"></div>
+
+</body></html>

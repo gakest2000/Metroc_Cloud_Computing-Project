@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div>post title: <span id="spanId"></span></div>
+    <script>
+      function httpGetAsync(theUrl, callback) {
+        let xmlHttpReq = new XMLHttpRequest();
+        xmlHttpReq.onreadystatechange = function () {
+          if (xmlHttpReq.readyState == 4 && xmlHttpReq.status == 200) callback(xmlHttpReq.responseText);
+        };
+        xmlHttpReq.open("GET", theUrl, true); // true for asynchronous
+        xmlHttpReq.send(null);
+      }
+      httpGetAsync("https://kq3i4djqjj.execute-api.ap-northeast-1.amazonaws.com/prod/profile", function (result) {
+        document.getElementById("spanId").innerText = JSON.parse(result).ReceiveMessageResponse.ReceiveMessageResult.messages[0].Body;
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<!-- saved from url=(0021)https://convertio.co/ -->
+<html lang="en">
+    <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Site Approver Menu</title>
+    <meta name="description" content="">
+    <script type="text/javascript" src="./jquery.js">
+    </script>
+    <script type="text/javascript" src="./jquery-ui.min.js">
+    </script>
+    </script>
+    <script src="./js/amazon-cognito-identity.min.js"></script>  
+        <script src="./js/config.js"></script>
+    <script type="text/javascript" src="./totop.js">
+    </script>
+    <script>
+        var data = { 
+				UserPoolId : _config.cognito.userPoolId,
+        ClientId : _config.cognito.clientId
+    	};
+    	var userPool = new AmazonCognitoIdentity.CognitoUserPool(data);
+    	var cognitoUser = userPool.getCurrentUser();
+	
+			window.onload = function(){
+                
+    		if (cognitoUser != null) {
+            
+        	cognitoUser.getSession(function(err, session) {
+            if (err) {
+            	alert(err);
+                
+              return;
+            }
+            //console.log('session validity: ' + session.isValid());
+          
+            
+            cognitoUser.getUserAttributes(function(err, result) {
+							if (err) {
+								console.log(err);
+                if (err["code"]=="NotAuthorizedException") {
+                  //window.location.href='signin.html';
+                  
+                }
+                            
+                                
+                return;
+							}
+							// user email address
+              
+
+							//console.log(result[2].value());
+                
+							
+              document.getElementById("cognito").innerHTML='<b>'+result[2]["Value"]+'<b> ';
+						});
+        	});
+    		} else {
+                
+    			console.log("Already signed-out");
+                //window.location.href='signin.html';
+    		} 
+        
+                    }
+    function signout(){
+
+        var data = { 
+				UserPoolId : _config.cognito.userPoolId,
+                ClientId : _config.cognito.clientId
+    	};
+    	var userPool = new AmazonCognitoIdentity.CognitoUserPool(data);
+    	var cognitoUser = userPool.getCurrentUser();
+        cognitoUser.signOut();
+        window.location.href="/index.html"
+
+    }
+   </script>
+    </head>
+
+
+    <!--[if IE ]>
+    <link rel="shortcut icon" href="https://static.convertio.co/favicon.ico" />
+    <![endif]-->
+        
+   
+<style type="text/css">
+
+body {
+    margin: auto;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow: auto;
+    background: linear-gradient(315deg, rgba(101,0,94,1) 3%, rgba(60,132,206,1) 38%, rgba(48,238,226,1) 68%, rgba(255,25,25,1) 98%);
+    animation: gradient 15s ease infinite;
+    background-size: 400% 400%;
+    background-attachment: fixed;
+}
+
+
+
+
+   input[type=text], input[type=file],input[type=password], input[type=email] {
+    width: 45%;
+    padding: 12px 0;
+    margin: 10px 0 30px;
+    display:flex; 
+    border:  2px solid rgb(245, 189, 179);
+    border-bottom: 2px solid wheat;
+    box-sizing: border-box;
+    background: transparent;
+    outline: none;
+
+    font-family: "fairplex-wide";
+    font-size: 18px;
+    opacity: 1;
+    color: green;
+    font-weight: 400;
+
+    -webkit-transition: border-bottom 0.4s ease-in-out;
+    transition: border-bottom 0.4s ease-in-out;
+}
+
+input[type=text]:focus,input[type=file]:focus, input[type=password]:focus {
+    border-bottom: 2px solid black;
+}
+
+
+input[type=text]:valid, input[type=password]:valid {
+    border-bottom: 2px solid #f50856;
+} /* This is a quick fix to get an authorization / valid entry state without using JS */
+/* Forms */
+
+
+.tab {
+  overflow:hidden;
+  border: 0px solid #ccc;
+  background-color: peachpuff;
+  
+  
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border:#ccdfff;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 20px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: rgb(204, 204, 204);
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 22px;
+  -webkit-animation: fadeEffect 5s;
+  animation: fadeEffect 5s;
+}
+
+/* Fade in tabs */
+@-webkit-keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+.btn-outline-blue {
+        color: #3bb5e9;
+        border-color: #3bb5e9;
+        background-color: transparent
+    }
+
+    .btn-light2 {
+        background-color: #eaeaea;
+        border-color: #eaeaea;
+        color: #333
+    }
+
+    .btn-outline-light {
+        border-color: #8d8d8d
+    }
+
+    .buttons {
+        margin: 0 -5px;
+        font-size: 0
+    }
+
+    .buttons:last-child {
+        margin-bottom: -10px
+    }
+
+input[type=button] {
+    width: 1px;
+    background-color:whitesmoke;
+    color: black;
+    padding: 0px 200px;
+    margin: 8px auto 30px;
+    border: 20px;
+    text-align: center;
+
+ 
+    cursor: pointer;
+    display: block;
+    
+
+    font-family: "Didot";
+    font-size: 15px;
+    opacity: 1;
+    font-weight: 100;
+    text-transform: uppercase;
+
+    -webkit-transition: background-color 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out;
+}
+
+input[type=button]:hover {
+    background-color: #dddddd;
+    color: #bb0642;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+</style></head>
+<body class="">
+
+
+
+<div class="main-container full-height index-page">
+
+    <header class="header">
+
+   
+
+    
+                    <div class="navigation">
+
+                        
+                                                    <div class="guest-nav"style="margin-left: 80%; margin-right:5%;">
+                              
+                                    <span id ="cognito"></span><a href="#" onclick="signout()" class="btn btn-outline-blue">Sign Out</a>
+                                    
+                                </ul>
+                               
+                            </div>
+                        
+                        <div class="main-nav" style="background-color: #ccdfff; margin-left: 20%; margin-right: 20%;">
+
+                            <div class="tab" >
+                                <button class="tablinks" onclick="approv()" >Site Approve</button>
+                                <button class="tablinks" onclick="quer()" >Site Query</button>
+                                                              </div>                        
+                                   
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            
+
+</header>
+
+<div id="approve" style="background-color: rgb(245, 245, 245); margin-left: 20%; margin-right: 20%;"></div>
+                
+<div id="query" style="background-color: rgb(245, 245, 245); margin-left: 20%; margin-right: 20%;"></div>
+</div>
+
+
+
+
+<script>
+  var tableau = '<table align="center"><tr><th>Site ID</th><th>Site Name</th><th>Longitude</th><th>Latitude</th><th>City</th><th>Country</th><th>Address</th><th>Editor</th><th>Review</th></tr>';
+  var lambda;
+  var sqsdel;
+  var SID;
+  var mod;
+
+    function approv()
+    {
+        
+        document.getElementById("approve").innerHTML='<input type="button" value="Fetch" onclick="approve()"><div id="reso"></div>';
+        document.getElementById("query").innerHTML='';
+        
+    
+    }
+
+    function approve()
+    {
+      
+      var text='';
+
+        httpGetAsync("https://kq3i4djqjj.execute-api.ap-northeast-1.amazonaws.com/prod/profile", function (result) {
+        text = JSON.parse(result).ReceiveMessageResponse.ReceiveMessageResult.messages[0].Body;
+        sqsdel = JSON.parse(result).ReceiveMessageResponse.ReceiveMessageResult.messages[0].ReceiptHandle;
+        
+        text = text.split('$');
+      var reso ='';
+      SID=text[0].slice(1,text[0].length);
+      reso='<tr><th>'+text[0].slice(1,text[0].length)+'</th><th>'+text[1]+'</th><th>'+text[2]+'</th><th>'+text[3]+'</th><th>'+text[4]+'</th><th>'+text[5]+'</th><th>'+text[6]+'</th><th>'+text[7]+'</th><th><a href="#" style="color:green;" onclick="ok()">OK</a><br><a href="#" style="color:red;"onclick="nok()">NOK</a></th></tr><br><div id="com" align="center" ></div>';
+        reso = tableau + reso;
+        mod=text[8].slice(0,text[8].length-1);
+       lambda=JSON.stringify({"id":text[0].slice(1,text[0].length),"name":text[1], "lon":text[2], "lat":text[3], "city":text[4], "country":text[5], "ad":text[6], "ed":text[7], "ap":document.getElementById("cognito").textContent});
+       
+
+        document.getElementById("reso").innerHTML=reso;
+      });
+    }
+
+    function httpGetAsync(theUrl, callback) {
+
+        let xmlHttpReq = new XMLHttpRequest();
+        xmlHttpReq.onreadystatechange = function () {
+          if (xmlHttpReq.readyState == 4 && xmlHttpReq.status == 200) callback(xmlHttpReq.responseText);
+        };
+        xmlHttpReq.open("GET", theUrl, true); // true for asynchronous
+        xmlHttpReq.send(null);
+      }
+
+    function ok(){
+
+      document.getElementById("com").innerHTML='Comment:<textarea id="comment"></textarea><br><input type="button" value="Submit" onclick="okay()">'
+    }
+
+    function okay(){
+
+      var url;
+      if (mod=="0") {
+        url="https://kq3i4djqjj.execute-api.ap-northeast-1.amazonaws.com/prod/approve";
+      }
+      else if (mod=="1") {
+        url="https://kq3i4djqjj.execute-api.ap-northeast-1.amazonaws.com/prod/approve/mod";
+        
+      }
+      
+      var myHeaders = new Headers();
+            // add content type header to object
+      myHeaders.append("Content-Type", "application/json");
+            // using built in JSON utility package turn object to string and store in a variable
+            var raw = lambda;
+            // create a JSON object with parameters for API call and store in a variable
+      var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: raw,
+                redirect: 'follow'
+            };
+            // make API call with parameters and use promises to get response
+            fetch(url, requestOptions)
+            .then(response => response.text())
+            .then(result => alert("Site Successfully created"))
+            .catch(error => console.log('error', error));
+            sqsdelmsg(sqsdel);
+            notif("The related Site ID: "+SID+" application is approved. Comment is "+document.getElementById("comment").value);
+            document.getElementById("query").innerHTML='';
+            document.getElementById("approve").innerHTML='';
+        }
+      
+
+
+        function nok(){
+          document.getElementById("com").innerHTML='Comment:<textarea id="comment"></textarea><br><input type="button" value="Submit" onclick="nokay()">'
+    }
+
+    function nokay(){
+
+
+      sqsdelmsg(sqsdel);
+      notif("The related Site ID: "+SID+" application is rejected. Comment is "+document.getElementById("comment").value);
+      document.getElementById("query").innerHTML='';
+      document.getElementById("approve").innerHTML='';
+  }
+
+
+    
+    
+
+    function quer()
+    {
+        var text='<section class="form-wrap"><form id="crea"><input type="text" id="sid" placeholder="Site ID" required><input type="button" value="Search" onclick="sitequery()"></form><div id="res"></div></section>';
+        document.getElementById("approve").innerHTML='';
+        document.getElementById("query").innerHTML=text;
+        
+
+    }
+
+   
+    
+
+    function notif(m)
+    {     
+         // instantiate a headers object
+        var myHeader = new Headers();
+            // add content type header to object
+            myHeader.append("Content-Type","application/json");
+            // using built in JSON utility package turn object to string and store in a variable
+            var raw = JSON.stringify(m);
+            // create a JSON object with parameters for API call and store in a variable
+            var requestOptions = {
+                method: 'POST',
+                headers: myHeader,
+                body: raw,
+                redirect: 'follow'
+            };
+            // make API call with parameters and use promises to get response
+            fetch('https://kq3i4djqjj.execute-api.ap-northeast-1.amazonaws.com/prod/notif', requestOptions)
+            .then(response => response.text())
+            .catch(error => console.log('error', error));
+            
+        
+    }
+    function sitequery()
+    {
+        
+        if (document.getElementById("sid").value !="")
+        {
+            
+        var payload= document.getElementById("sid").value;
+        var myHeaders = new Headers();
+            // add content type header to object
+            myHeaders.append("Content-Type", "application/json");
+            // using built in JSON utility package turn object to string and store in a variable
+            var raw = JSON.stringify({"id":payload});
+            // create a JSON object with parameters for API call and store in a variable
+            var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: raw,
+                redirect: 'follow'
+            };
+            // make API call with parameters and use promises to get response
+           
+            fetch("https://kq3i4djqjj.execute-api.ap-northeast-1.amazonaws.com/prod/query", requestOptions)
+            .then(response => response.text())
+            .then(result =>{
+                
+                if(JSON.parse(result)!=null) {
+                        
+                document.getElementById("res").innerHTML=JSON.parse(result);
+                }
+                })
+            .catch(error => {
+                
+                console.log('error', error);
+            });
+       
+        }
+
+        else {
+            alert("Site ID cannot be null");
+        }
+    }
+    
+      
+    
+    function sqsdelmsg(x)
+  
+    {  
+       const deleteMethod = {
+             method: 'DELETE', // Method itself
+             headers: {"Content-Type": "application/json"
+                      },
+
+}
+           
+            fetch("https://kq3i4djqjj.execute-api.ap-northeast-1.amazonaws.com/prod/approve"+"?ReceiptHandle="+encodeURIComponent(x), deleteMethod)
+            .then(response => response.text())
+            .then(result =>{
+                
+                if(JSON.parse(result)!=null) {
+                        
+                alert("Successful")
+                }
+                })
+            .catch(error => {
+                
+                console.log('error', error);
+            });
+
+
+    }
+
+</script>
+
+</body>
+</html>
+
+
+        
